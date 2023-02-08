@@ -9,7 +9,7 @@ import ParticlesBg from 'particles-bg';
 function App() {
   return (
     <div className="App">
-      <ParticlesBg type="lines" bg={true} />
+      <ParticlesBg type="square" bg={true} />
       <Navigation />
       <Logo />
       <Rank />
