@@ -6,7 +6,7 @@ import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Rank from './components/Rank/Rank';
 import ParticlesBg from 'particles-bg';
-import Clarifai, { COLOR_MODEL } from 'clarifai';
+import Clarifai, { FACE_DETECT_MODEL } from 'clarifai';
 
 const app = new Clarifai.App({
   apiKey: 'dd69578531d6428da173720339b0a6ff'
@@ -29,11 +29,11 @@ class App extends Component {
     this.setState({imageUrl: this.state.input});
     app.models
     .predict(
-      Clarifai.COLOR_MODEL, 
+      Clarifai.FACE_DETECT_MODEL, 
       this.state.input)
       .then(
     function(response) {
-      console.log(response)
+      console.log(response.outputs[0].data.regions[0].region_info.bounding_box)
     },
     function(err) {
       // there was an error
